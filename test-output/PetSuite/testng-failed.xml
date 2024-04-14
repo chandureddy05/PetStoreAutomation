@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [PetSuite]">
+  <test name="PetTest(failed)">
+    <classes>
+      <class name="api.test.UserTests2">
+        <methods>
+          <include name="testUpdateUser"/>
+          <include name="setupData"/>
+          <include name="testPostUser"/>
+          <include name="testGetUserByName"/>
+          <include name="testDeleteUser"/>
+        </methods>
+      </class> <!-- api.test.UserTests2 -->
+    </classes>
+  </test> <!-- PetTest(failed) -->
+</suite> <!-- Failed suite [PetSuite] -->
