@@ -2,10 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="PetSuite">
 
-	<listeners>
-		<listener class-name="api.utilities.ExtentReportManager"/>
-	</listeners>
 	
+	<listeners>
+        <listener class-name="api.utilitiesExtentReportManager"/>
+    </listeners>
+    
   <test name="PetTest">
     <classes>
     	<class name="api.test.UserTests"/>

@@ -7,12 +7,14 @@ import org.apache.xmlbeans.SystemProperties;
 import org.codehaus.groovy.tools.ErrorReporter;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
+import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+
 
 public class ExtentReportManager implements ITestListener
 {
@@ -44,33 +46,31 @@ public class ExtentReportManager implements ITestListener
 		
 	}
 	
-	public void onTestSuccess(ITestContext result){
+	public void onTestSuccess(ITestResult result){
 		
 		test=extent.createTest(result.getName());
-		test.assignCategory(result.getIncludedGroups());
-		//test.assignCategory(result.getMethods().getGroups());
+		//test.assignCategory(result.getAllTestMethods());
+		test.assignCategory(result.getMethod().getGroups());
 		test.createNode(result.getName());
 		test.log(Status.PASS, "Test Passed");
 	}
 	
-		public void onTestFailure(ITestContext result){
+		public void onTestFailure(ITestResult result){
 				
 				test=extent.createTest(result.getName());
-				test.assignCategory(result.getIncludedGroups());
-				//test.assignCategory(result.getMethods().getGroups());
+				test.assignCategory(result.getMethod().getGroups());
 				test.createNode(result.getName());
 				test.log(Status.FAIL, "Test Failed");
-				//test.log(Status.FAIL, result.getThrowable().getMesssage());
+				test.log(Status.FAIL, result.getThrowable().getMessage());
 		}
 		
-		public void onTestSkipped(ITestContext result){
+		public void onTestSkipped(ITestResult result){
 			
 			test=extent.createTest(result.getName());
-			test.assignCategory(result.getIncludedGroups());
-			//test.assignCategory(result.getMethods().getGroups());
+			test.assignCategory(result.getMethod().getGroups());
 			test.createNode(result.getName());
 			test.log(Status.SKIP, "Test SKIPPED");
-			//test.log(Status.FAIL, result.getThrowable().getMesssage());
+			test.log(Status.FAIL, result.getThrowable().getMessage());
 		}
 		
 		public void onFinish(ITestContext testContext)
