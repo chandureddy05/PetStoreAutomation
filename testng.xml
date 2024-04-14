@@ -3,9 +3,9 @@
 <suite name="PetSuite">
 
 	
-	<listeners>
+	<!--  <listeners>
         <listener class-name="api.utilitiesExtentReportManager"/>
-    </listeners>
+    </listeners> -->
     
   <test name="PetTest">
     <classes>
